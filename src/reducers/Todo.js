@@ -10,12 +10,15 @@ export const initialState = [
 
 export const listToDo = (state, dispatch) =>{
     return state.map(res =>(
+        <>
         <button onClick={() => toggleCompleted(state, res, dispatch)}>
             <ul>
                 <li> Item: {res.item} </li>
                 <li> Is Completed? : {`${res.completed}`} </li>
             </ul>
-        </button>
+        </button> 
+        <br /> 
+        </>
     ));
 }
 
@@ -28,11 +31,11 @@ const toggleCompleted = (state, res, dispatch) =>{
     dispatch((state, {type: 'TOGGLE'}))
 }
 
-function reducer(state, action) {
-    switch(action.type){
+function reducer(state, {value, type}) {
+    switch(type){
         case 'NEW' :
             return [ ...state,{ 
-                item: action.value,
+                item: value,
                 completed: false,
                 id: new Date().getMilliseconds()
             }]
