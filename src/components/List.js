@@ -5,27 +5,28 @@ const List = () => {
     const [todo, dispatch] = useReducer(reducer, initialState);
     const [value, setValue] = useState();
 
-    const handleChange = (event, setValue) =>{
-        setValue(event.target.value);
+    const handleChange = (event) =>{
+        return event.target.value;
     }
 
-    const handleSubmit = (event, value, todo, dispatch) =>{
+    const handleSubmit = (event, value, todo) =>{
         event.preventDefault();
-        dispatch((todo, {type: 'NEW', value: value}))
+        return (todo, {type: 'NEW', value: value})
     }
 
     return (
         <> 
-        <div>
+        <div className="list-container">
+            <h1>Tasks</h1>
             {listToDo(todo, dispatch)}
         </div>
         <div>
-            <form onSubmit={(event) => handleSubmit(event, value, todo, dispatch)}>
+            <form onSubmit={(event) => dispatch(handleSubmit(event, value, todo))}>
                 Create a new Todo <br />
                 Name: <input
                     type="text"
                     value={value}
-                    onChange={event => handleChange(event, setValue)}
+                    onChange={event => setValue(handleChange(event))}
                 />
                 <input type="submit" value="Submit"/>
             </form>

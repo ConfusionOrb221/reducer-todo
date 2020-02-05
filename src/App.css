@@ -28,6 +28,34 @@
   color: #61dafb;
 }
 
+.list-container{
+  text-align: center;
+  width: 100%;
+}
+
+h1{
+  margin: 2px 0 2px 0;
+}
+
+.list-container ul {
+  list-style: none;
+  text-align: left;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 16px;
+  
+}
+
+.list-container button{
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border: 0;
+}
+.list-container button:hover{
+  background-color: rgba(24, 2, 2, 0.664);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
